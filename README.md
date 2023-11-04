@@ -17,9 +17,7 @@ Imblearn – This module contains a function that can be used for handling probl
 
  install necessary packages ( install first time only )
 !pip install numpy pandas sklearn xgboost --upgrade
-This Python 3 environment comes with many helpful analytics libraries installed
-It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
-For example, here's several helpful packages to load
+
 
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)

@@ -1,10 +1,25 @@
-# f
+# detecting-parkinson-s-disease-machine-learning
+Parkinson’s disease is a progressive disorder that affects the nervous system and the parts of the body controlled by the nerves. Symptoms are also not that sound to be noticeable. Signs of stiffening, tremors, and slowing of movements may be signs of Parkinson’s disease.
 
-#  install necessary packages ( install first time only )
-# !pip install numpy pandas sklearn xgboost --upgrade
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load
+But there is no ascertain way to tell whether a person has Parkinson’s disease or not because there are no such diagnostics methods available to diagnose this disorder. But what if we use machine learning to predict whether a person suffers from Parkinson’s disease or not? This is exactly what we’ll be learning in this article.
+
+Parkinson Disease Prediction using Machine Learning in Python
+Importing Libraries and Dataset
+Python libraries make it very easy for us to handle the data and perform typical and complex tasks with a single line of code.
+
+Pandas – This library helps to load the data frame in a 2D array format and has multiple functions to perform analysis tasks in one go.
+Numpy – Numpy arrays are very fast and can perform large computations in a very short time.
+Matplotlib/Seaborn – This library is used to draw visualizations.
+Sklearn – This module contains multiple libraries having pre-implemented functions to perform tasks from data preprocessing to model development and evaluation.
+XGBoost – This contains the eXtreme Gradient Boosting machine learning algorithm which is one of the algorithms which helps us to achieve high accuracy on predictions.
+Imblearn – This module contains a function that can be used for handling problems related to data imbalance.
+
+
+ install necessary packages ( install first time only )
+!pip install numpy pandas sklearn xgboost --upgrade
+This Python 3 environment comes with many helpful analytics libraries installed
+It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+For example, here's several helpful packages to load
 
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
@@ -17,19 +32,19 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
     for filename in filenames:
         print(os.path.join(dirname, filename))
 
-# You can write up to 5GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
-# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+ You can write up to 5GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
+You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
 /kaggle/input/parkinsons.data
 Install Necessary packages here
-# os packages
+os packages
 import os, sys
 Data Collection
-#  let’s read the data into a DataFrame 
+ let’s read the data into a DataFrame 
 
 df = pd.read_csv('/kaggle/input/parkinsons.data')
 df.tail() # shows the last 5 rows
 
-# head() <= Use for first 5 rows
+ head() <= Use for first 5 rows
 name	MDVP:Fo(Hz)	MDVP:Fhi(Hz)	MDVP:Flo(Hz)	MDVP:Jitter(%)	MDVP:Jitter(Abs)	MDVP:RAP	MDVP:PPQ	Jitter:DDP	MDVP:Shimmer	...	Shimmer:DDA	NHR	HNR	status	RPDE	DFA	spread1	spread2	D2	PPE
 190	phon_R01_S50_2	174.188	230.978	94.261	0.00459	0.00003	0.00263	0.00259	0.00790	0.04087	...	0.07008	0.02764	19.517	0	0.448439	0.657899	-6.538586	0.121952	2.657476	0.133050
 191	phon_R01_S50_3	209.516	253.017	89.488	0.00564	0.00003	0.00331	0.00292	0.00994	0.02751	...	0.04812	0.01810	19.147	0	0.431674	0.683244	-6.195325	0.129303	2.784312	0.168895
@@ -153,7 +168,6 @@ y_prediction = model.predict(x_test)
 
 print("Accuracy Score is", accuracy_score(y_test, y_prediction) * 100)
 Accuracy Score is 90.0
-Wonderful work 👍
 
 Summary
 In this Python machine learning project, we learned to detect the presence of Parkinson’s Disease in individuals using various factors. We used an XGBClassifier for this and made use of the sklearn library to prepare the dataset. This gives us an accuracy of 96.66%, which is great considering the number of lines of code in this python project.

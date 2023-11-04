@@ -63,8 +63,26 @@ min	88.333000	102.145000	65.476000	0.001680	0.000007	0.000680	0.000920	0.002040	
 50%	148.790000	175.829000	104.315000	0.004940	0.000030	0.002500	0.002690	0.007490	0.022970	0.221000	...	0.038360	0.011660	22.085000	1.000000	0.495954	0.722254	-5.720868	0.218885	2.361532	0.194052
 75%	182.769000	224.205500	140.018500	0.007365	0.000060	0.003835	0.003955	0.011505	0.037885	0.350000	...	0.060795	0.025640	25.075500	1.000000	0.587562	0.761881	-5.046192	0.279234	2.636456	0.252980
 max	260.105000	592.030000	239.170000	0.033160	0.000260	0.021440	0.019580	0.064330	0.119080	1.302000	...	0.169420	0.314820	33.047000	1.000000	0.685151	0.825288	-2.434031	0.450493	3.671155	0.527367
-8 rows × 23 columns
 
+# hi-square test.
+
+as we have 8 rows × 23 columns,
+So, from a feature space of 755 columns, we have reduced it to a feature space of 287 columns. But still, it is too high as the number of features is still more than the number of examples or data points. Reason behind this statement is the same as that behind the curse of dimensionality problem as the feature space grows the number of examples required to generalize on the dataset becomes difficult and the model’s performance decreases.
+
+So, let’s reduce the feature space up to 30 by using the chi-square test.
+
+X = df.drop('class', axis=1)
+X_norm = MinMaxScaler().fit_transform(X)
+selector = SelectKBest(chi2, k=30)
+selector.fit(X_norm, df['class'])
+filtered_columns = selector.get_support()
+filtered_data = X.loc[:, filtered_columns]
+filtered_data['class'] = df['class']
+df = filtered_data
+df.shape
+Output:
+
+(252, 31)
 #  To know how many rows and cols and NA values
 
 df.info()
